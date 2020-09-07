@@ -82,8 +82,7 @@
                         <div class="col-md-12">
                             <div class="form-group">
                                 <label>Masukkan Uang Pembeli</label>
-                                <input type="tel" id="pay" class="form-control form-control-sm"
-                                onkeypress="validate(event)"/>
+                                <input type="number" min="1000" id="pay" class="form-control form-control-sm"/>
                             </div>
                         </div>
                         <div class="col-md-12">
@@ -272,8 +271,10 @@
                 const text = "uang yang di bayarkan harus lebih dari total";
                 alertFailed(text);
             }else{
+                $('#detail').modal('hide');
                 const text = "terima kasih sudah belanja di toko kami";
                 alertSuccess(text);
+                refresh();
             }
         })
 
@@ -309,20 +310,8 @@
             });
         }
 
-        function validate(evt) {
-            let theEvent = evt || window.event;
-            if (theEvent.type === 'paste') {
-                key = event.clipboardData.getData('text/plain');
-            } else {
-            // Handle key press
-                let key = theEvent.keyCode || theEvent.which;
-                key = String.fromCharCode(key);
-            }
-            let regex = /[0-9]|\./;
-            if( !regex.test(key) ) {
-                theEvent.returnValue = false;
-                if(theEvent.preventDefault) theEvent.preventDefault();
-            }
+        function refresh() {
+            setTimeout("location.reload(true);",1500);
         }
 
     </script>
