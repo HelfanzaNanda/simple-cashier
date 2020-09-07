@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return redirect()->route('food.index');
+    return redirect()->route('transaction.index');
 });
 
 Route::get('food', 'FoodController@index')->name('food.index');

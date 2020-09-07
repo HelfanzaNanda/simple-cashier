@@ -82,7 +82,8 @@
                         <div class="col-md-12">
                             <div class="form-group">
                                 <label>Masukkan Uang Pembeli</label>
-                                <input type="tel" id="pay" class="form-control form-control-sm"/>
+                                <input type="tel" id="pay" class="form-control form-control-sm"
+                                onkeypress="validate(event)"/>
                             </div>
                         </div>
                         <div class="col-md-12">
@@ -141,8 +142,8 @@
                 }else{
                     sameFood(foods, id, price);
                 }
-                foods.map((f, i) => foodHtml += showFood(f));   
-                charge.innerText = 'Rp. '+rupiah(total);
+                foods.map((f, i) => foodHtml += showFood(f));
+                charge.innerText = 'Charge Rp. '+rupiah(total);
                 foodBill.innerHTML = foodHtml;
             });
         });
@@ -197,7 +198,9 @@
                 confirmButtonText: 'Ya'
                 }).then((result) => {
                 if (result.isConfirmed) {
+                    total = 0;
                     foods = [];
+                    charge.innerText = 'Charge';
                     foodBill.innerHTML = ``;
                     const text = "makanan yang di pilih telah dihapus";
                     alertDelete(text);
@@ -305,5 +308,22 @@
                 console.log(error);
             });
         }
+
+        function validate(evt) {
+            let theEvent = evt || window.event;
+            if (theEvent.type === 'paste') {
+                key = event.clipboardData.getData('text/plain');
+            } else {
+            // Handle key press
+                let key = theEvent.keyCode || theEvent.which;
+                key = String.fromCharCode(key);
+            }
+            let regex = /[0-9]|\./;
+            if( !regex.test(key) ) {
+                theEvent.returnValue = false;
+                if(theEvent.preventDefault) theEvent.preventDefault();
+            }
+        }
+
     </script>
 @endsection
