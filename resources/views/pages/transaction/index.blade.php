@@ -279,14 +279,13 @@
                 const text = "harus memilih makanan, minimal 1";
                 alertFailed(text);
             }else{
-                printPdf()
+
+                printPdf();
             }
         })
 
-
         function printPdf(){
-            //const data = JSON.stringify(foods);
-            //console.log(url);
+
             fetch(url+"transaction/print", {
                 headers: {
                     "Content-Type": "application/json",
@@ -299,13 +298,12 @@
                 body: JSON.stringify(foods)
             })
             .then((data) => {
-                form.reset();
                 window.location.href = redirect;
+                alertSuccess("berhasil print");
             })
             .catch(function(error) {
                 console.log(error);
             });
         }
-
     </script>
 @endsection

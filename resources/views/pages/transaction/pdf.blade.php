@@ -52,8 +52,8 @@
                 <tr>
                     <th colspan="3">Invoice <strong>{{ $id }}</strong></th>
                     <th colspan="3">
-                        <strong>Tanggal : {{ $now->format('d-m-Y') }}</strong><br>
-                        <strong>Waktu : {{ $now->format('H:i') }}</strong>
+                        <strong>Tanggal : {{ date('d-m-Y', strtotime($now)) }}</strong><br>
+                        <strong>Waktu : {{ date('H:i', strtotime($now)) }}</strong>
                     </th>
                 </tr>
             </thead>
@@ -69,17 +69,17 @@
                 @foreach ($transactions as $transaction)
                 <tr>
                     <th>{{ $loop->iteration }}</th>
-                    <th>{{ $transaction->name }}</th>
-                    <th>{{ $transaction->qty }}</th>
-                    <th>Rp. {{ number_format($transaction->price, 0,',','.') }}</th>
-                    <th>Rp. {{ number_format($transaction->price * $transaction->qty, 0,',','.') }}</th>
+                    <th>{{ $transaction['name'] }}</th>
+                    <th>{{ $transaction['qty'] }}x</th>
+                    <th>Rp. {{ number_format($transaction['price'], 0,',','.') }}</th>
+                    <th>Rp. {{ number_format($transaction['price'] * $transaction['qty'], 0,',','.') }}</th>
                 </tr>
-                @php($total += $transaction->price * $transaction->qty)
+                @php($total += $transaction['price'] * $transaction['qty'])
                 @endforeach
             </tbody>
             <tfoot>
                 <tr>
-                    <th colspan="4" rowspan="3"></th>
+                    <th colspan="3" rowspan="3"></th>
                     <th>Total Bayar</th>
                     <td>Rp. {{ number_format($total, 0,',','.') }}</td>
                 </tr>

@@ -20,9 +20,9 @@ class TransactionController extends Controller
         $transactions = $request->all();
         $now = now()->format('d-m-Y H:i');
 
-        return view('pages.transaction.pdf', compact(['transaction', 'id', 'now']));
-        // $pdf = PDF::loadview('pages.transaction.pdf', compact(['transaction', 'id', 'now']))
-        //         ->setPaper([0,0,720,1440], 'landscape');
-        // return $pdf->stream();
+        //return view('pages.transaction.pdf', compact(['transactions', 'id', 'now']));
+        $pdf = PDF::loadview('pages.transaction.pdf', compact(['transactions', 'id', 'now']))
+                ->setPaper('A4', 'landscape');
+        return $pdf->stream();
     }
 }
