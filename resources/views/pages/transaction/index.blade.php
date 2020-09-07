@@ -94,7 +94,7 @@
         </div>
         <div class="modal-footer bg-whitesmoke br">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="button" id="save" class="btn btn-primary">Save</button>
+          <button type="button" id="save" class="btn btn-primary">Ok</button>
         </div>
       </div>
     </div>
@@ -283,13 +283,11 @@
                 const text = "harus memilih makanan, minimal 1";
                 alertFailed(text);
             }else{
-
-                printPdf();
+                printJS({printable: foods, type: 'json', properties: ['id', 'name', 'qty', 'price']});
             }
         })
 
         function printPdf(){
-
             fetch(url+"transaction/print", {
                 headers: {
                     "Content-Type": "application/json",
