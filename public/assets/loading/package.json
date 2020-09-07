@@ -1,0 +1,83 @@
+{
+  "_from": "jquery-easy-loading",
+  "_id": "jquery-easy-loading@2.0.0-rc.2",
+  "_inBundle": false,
+  "_integrity": "sha512-onWOmVz81OIK/DS0Z5aZiYfcPdwv7RX2N31kC8VJqY5UV0Sxe0kkl+Tlv1Fa1GaGnh4Px7WA9nbWcMfnNKLb6A==",
+  "_location": "/jquery-easy-loading",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "tag",
+    "registry": true,
+    "raw": "jquery-easy-loading",
+    "name": "jquery-easy-loading",
+    "escapedName": "jquery-easy-loading",
+    "rawSpec": "",
+    "saveSpec": null,
+    "fetchSpec": "latest"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/jquery-easy-loading/-/jquery-easy-loading-2.0.0-rc.2.tgz",
+  "_shasum": "bd33d396bba3ee61a15351f4efd2cdfc94bcce1b",
+  "_spec": "jquery-easy-loading",
+  "_where": "c:\\xampp\\htdocs\\TestMataWebsite",
+  "author": {
+    "name": "Carlos Bonetti",
+    "email": "carlosbonetti.mail@gmail.com"
+  },
+  "bugs": {
+    "url": "https://github.com/CarlosBonetti/jquery-loading/issues"
+  },
+  "bundleDependencies": false,
+  "deprecated": false,
+  "description": "Easily add and manipulate loading states of any element on the page",
+  "devDependencies": {
+    "cross-env": "5.2.0",
+    "css-loader": "3.2.0",
+    "eslint": "6.1.0",
+    "husky": "3.0.3",
+    "jest": "24.8.0",
+    "jquery": "1.11.1",
+    "prettier": "1.18.2",
+    "pretty-quick": "1.11.1",
+    "style-loader": "1.0.0",
+    "webpack": "4.39.1",
+    "webpack-cli": "3.3.6"
+  },
+  "homepage": "http://carlosbonetti.github.io/jquery-loading/",
+  "husky": {
+    "hooks": {
+      "pre-commit": "pretty-quick --staged"
+    }
+  },
+  "keywords": [
+    "jquery",
+    "jquery-plugin",
+    "ecosystem:jquery",
+    "overlay",
+    "loading",
+    "loader",
+    "ajax"
+  ],
+  "license": "MIT",
+  "main": "./dist/jquery.loading.js",
+  "name": "jquery-easy-loading",
+  "peerDependencies": {
+    "jquery": ">=1.7"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/CarlosBonetti/jquery-loading.git"
+  },
+  "scripts": {
+    "build": "webpack && cross-env NODE_ENV=production webpack -p",
+    "eslint": "eslint src/**/*.js test/**/*.js",
+    "preversion": "npm run build && git add dist/",
+    "start": "webpack --watch",
+    "test": "jest"
+  },
+  "url": "http://github.com/CarlosBonetti/jquery-loading",
+  "version": "2.0.0-rc.2"
+}
